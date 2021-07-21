@@ -10,12 +10,18 @@ namespace BookStoreMVC.Controlers
     {
         public ViewResult Index()
         {
-            return View();
+            var obj = new { Id = 1, Name = "Raihan" };
+            return View("AboutUs", obj);
         }
 
         public ViewResult AboutUs()
         {
             return View();
+        }
+
+        public ViewResult ContactUs()
+        {
+            return View();            
         }
 
     }
