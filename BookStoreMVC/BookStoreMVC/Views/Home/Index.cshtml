@@ -10,14 +10,25 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <link href="~/css/Site.css" rel="stylesheet" />
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
 </head>
-<body>
+<body class="container">
     <img src="~/images/logo.jpg" class="logo" alt="logo" />
+    <input type="button" name="name" value="Click Me" class="btn btn-danger" />
+    
+ 
 
-    <h1>Welcome to book store application</h1>
+    <h1 class="h1">Welcome to book store application</h1>
     <p>This is the home page</p>
 
    
 
 </body>
+<script src="~/lib/jquery/jquery.js"></script>
 </html>
+
+<script>
+    $(document).ready(function () {
+        alert("hi")
+    });
+</script>
