@@ -8,9 +8,14 @@ namespace BookStoreMVC.Controlers
 {
     public class HomeController : Controller
     {
-        public string Index()
+        public ViewResult Index()
         {
-            return "Welcome to MVC";
+            return View();
+        }
+
+        public ViewResult AboutUs()
+        {
+            return View();
         }
 
     }
