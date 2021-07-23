@@ -4,8 +4,9 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Book Store Application</title>
-    <link href="~/css/Site.css" rel="stylesheet" />
     <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/Site.css" rel="stylesheet" />
+
 </head>
 <body>
     <header>
@@ -13,7 +14,7 @@
             <div class="container">
                 <a class="navbar-brand" href="/">
                     <img src="~/images/logo.png" width="30" height="30" />
-                    
+
 
                     Book store
                 </a>
@@ -50,10 +51,16 @@
         @RenderBody()
     </main>
 
-    <footer class="border-top footer text-muted text-center">
-        <div class="container">
-            Copyright &copy; Mubasshir Raihan @DateTime.Now.Year
-        </div>
-    </footer>    
+
+        <footer class="border-top footer text-muted text-center">
+            <div class="container">
+                Copyright &copy; Mubasshir Raihan @DateTime.Now.Year
+            </div>
+        </footer>
+    
+    <script src="~/lib/jquery/jquery.js"></script>
+
+    @RenderSection("scripts", required: false)
+
 </body>
 </html>
