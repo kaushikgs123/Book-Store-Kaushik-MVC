@@ -1,23 +1,25 @@
 ﻿@{ 
-    dynamic obj = ViewBag.Data;
-
-    dynamic obje2 = ViewBag.Type;
+    var bookInfo = ViewData["Property2"] as BookModel;
 }
 
 @*<img src="~/images/logo.jpg" class="logo" alt="logo" />*@
 
 <section class="jumbotron text-center">
     <div class="container">
-        <h1>Welcome to Bookstore @ViewBag.Name </h1>
-     @obj.Id @obj.Roll @obj.Title
 
-        @obje2.Description
+        <h1>Welcome to Bookstore @ViewData["Property1"]</h1>
+
         <p class="lead text-muted">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
         <p>
             <a href="#" class="btn btn-primary my-2">Search books</a>
+            <h1>Author= @bookInfo.Author</h1>
+            <h1>Language= @bookInfo.Language</h1>
+          
+
+
         </p>
     </div>
 </section>

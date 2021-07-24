@@ -12,20 +12,8 @@ namespace BookStoreMVC.Controlers
     {
         public ViewResult Index()
         {
-            ViewBag.Name = "Raihan";
-            dynamic data = new ExpandoObject();
-            ViewBag.Data = data;
-            data.Id = 1;
-            data.Title = "ViewBag learning";
-            data.Roll = 112;
-
-
-            //Passing Object
-
-            ViewBag.Type = new BookModel() { Description= "jjjjjjjjjjjjjjjj" };
-
-           
-            
+            ViewData["Property1"] = "Mubasshir Raihan";
+            ViewData["Property2"] = new BookModel() { Author = "Riya", Language = "Python" };
             return View();
         }
 
