@@ -10,20 +10,27 @@ namespace BookStoreMVC.Controlers
 {
     public class HomeController : Controller
     {
+        [ViewData]
+        public string CustomProperty { get; set; }
+
+        [ViewData]
+        public string Title { get; set; }
         public ViewResult Index()
         {
-            ViewData["Property1"] = "Mubasshir Raihan";
-            ViewData["Property2"] = new BookModel() { Author = "Riya", Language = "Python" };
+            CustomProperty = "Hllo from View data";
+            Title = "Home from controller";
             return View();
         }
 
         public ViewResult AboutUs()
         {
+            Title = "About Us From controller";
             return View();
         }
 
         public ViewResult ContactUs()
         {
+            Title = "Contact Us From controller";
             return View();            
         }
 
