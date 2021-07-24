@@ -35,12 +35,12 @@ namespace BookStoreMVC
 
             app.UseEndpoints(endpoints =>
             {
-            //endpoints.MapDefaultControllerRoute();
-            endpoints.MapControllerRoute(
-                name: "Default",
-                pattern: "BookApp/{controller=Home}/{action=Index}/{id?}");
-                   
-                
+                endpoints.MapDefaultControllerRoute();
+                //endpoints.MapControllerRoute(
+                //    name: "Default",
+                //    pattern: "BookApp/{controller=Home}/{action=Index}/{id?}");
+
+
             });
         }
     }
