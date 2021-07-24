@@ -10,7 +10,7 @@ namespace BookStoreMVC.Controlers
 {
     public class HomeController : Controller
     {
-        [ViewData]
+        [ViewData] 
         public string CustomProperty { get; set; }
 
         [ViewData]
