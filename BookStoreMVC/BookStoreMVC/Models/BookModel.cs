@@ -17,6 +17,7 @@ namespace BookStoreMVC.Models
         public string Author { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
+        [Required (ErrorMessage ="Select a language of your book")]
         public string Language { get; set; }
 
         [Required (ErrorMessage ="Please enter the total pages")]
