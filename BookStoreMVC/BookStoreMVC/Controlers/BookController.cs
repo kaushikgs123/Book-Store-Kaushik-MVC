@@ -22,10 +22,10 @@ namespace BookStoreMVC.Controlers
             return View(data);
         }
 
-        [Route("book-detail/{id}")]
-        public ViewResult GetBook(int id)
+        //[Route("book-detail/{id}")]
+        public async Task<ViewResult> GetBook(int id)
         {
-            var data= _bookRepository.GetBookById(id);
+            var data= await _bookRepository.GetBookById(id);
             return View(data);
         }
 
