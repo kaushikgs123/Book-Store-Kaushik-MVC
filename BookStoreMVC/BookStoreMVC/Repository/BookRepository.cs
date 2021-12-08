@@ -1,5 +1,6 @@
 ﻿using BookStoreMVC.Data;
 using BookStoreMVC.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,9 +37,31 @@ namespace BookStoreMVC.Repository
         }
 
 
-        public List<BookModel> GetAllBooks()
+        public async Task<List<BookModel>>  GetAllBooks()
         {
-            return DataSource();
+            var books = new List<BookModel>();
+            var allBooks = await _context.Books.ToListAsync();
+
+            if (allBooks?.Any()==true)
+            {
+                foreach (var item in allBooks)
+                {
+                    books.Add(new BookModel()
+                    {
+                        Author=item.Author,
+                        Category=item.Category,
+                        Description=item.Description,
+                        Id=item.Id,
+                        Language=item.Language,
+                        Title=item.Title,
+                        TotalPages=item.TotalPages
+
+                    });
+
+                }
+            }
+
+            return books;
         }
 
 
