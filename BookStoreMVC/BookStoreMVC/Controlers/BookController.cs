@@ -1,6 +1,7 @@
 ﻿using BookStoreMVC.Models;
 using BookStoreMVC.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,8 @@ namespace BookStoreMVC.Controlers
 
         public ViewResult AddNewBook(bool isSuccess=false, int bookId=0)
         {
+            //ViewBag.ListOflanguage = new List<string>() { "Bangla", "English", "Arabic" }; // New list at CSHTML File
+            ViewBag.ListOflanguage = new SelectList( new List<string>() { "Bangla", "English", "Arabic" });
             ViewBag.IsSuccess = isSuccess;
             ViewBag.BookId = bookId;
             return View();
@@ -53,7 +56,9 @@ namespace BookStoreMVC.Controlers
                     return RedirectToAction(nameof(AddNewBook), new { isSuccess = true, bookId = id });
                 }
             }
-           
+
+            // ViewBag.ListOflanguage = new List<string>() { "Bangla", "English", "Arabic" };
+            ViewBag.ListOflanguage = new SelectList(new List<string>() { "Bangla", "English", "Arabic" });
             return View();
         }
     }
