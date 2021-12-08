@@ -1,4 +1,5 @@
 using BookStoreMVC.Data;
+using BookStoreMVC.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -19,11 +20,13 @@ namespace BookStoreMVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<BookStoreContext>
-                (options => options.UseSqlServer("Server=DESKTOP-4BMDG8B; DataBase=BookStore; Integrated Security= True;"));
+                (options => options.UseSqlServer("Server=DESKTOP-4BMDG8B; DataBase=BookStrore; Integrated Security= True;"));
 
             services.AddControllersWithViews();
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();  //It works only for development environment
+            services.AddScoped<BookRepository, BookRepository>();
+
 #endif
         }
 

@@ -1,4 +1,5 @@
-﻿using BookStoreMVC.Models;
+﻿using BookStoreMVC.Data;
+using BookStoreMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,33 @@ namespace BookStoreMVC.Repository
 {
     public class BookRepository
     {
+        private readonly BookStoreContext _context = null;
+
+        public BookRepository(BookStoreContext context)
+        {
+            _context = context;
+        }
+
+        public  int AddNewBook(BookModel model)
+        {
+            var newBook = new Books()
+            {
+                Author=model.Author,
+                CreatedOn=DateTime.UtcNow,
+                Description=model.Description,
+                Title=model.Title,
+                TotalPages=model.TotalPages,
+                UpdatedOn=DateTime.UtcNow
+            };
+
+            _context.Books.Add(newBook);
+            _context.SaveChanges();
+            return newBook.Id;
+
+          
+        }
+
+
         public List<BookModel> GetAllBooks()
         {
             return DataSource();
@@ -59,7 +87,7 @@ namespace BookStoreMVC.Repository
                 "aspernatur" +  " enim rem expedita at mollitia, iure nostrum laborumenim rem expedita at mollitia, iure nostrum laborum",Category="Programming",
                 Language="English", TotalPages=965},
 
-                new BookModel(){Id=6, Title="Data Structure", Author="Tanjeeb", Description="This is a description sectionThis is a description section sectionLorem " +
+                new BookModel(){Id=9, Title="Data Structure", Author="Tanjeeb", Description="This is a description sectionThis is a description section sectionLorem " +
                 "ipsum dolor sit amet consectetur" +
                 " adipisicing elit. Ducimus dolores molestiae laborum quaerat exercitationem nesciunt odio ipsum consequuntur. Architecto doloremque natus " +
                 "aspernatur" +  " enim rem expedita at mollitia, iure nostrum laborumenim rem expedita at mollitia, iure nostrum laborum",Category="Programming",
