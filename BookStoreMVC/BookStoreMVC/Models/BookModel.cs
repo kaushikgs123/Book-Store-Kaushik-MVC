@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookStoreMVC.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace BookStoreMVC.Models
         public string Description { get; set; }
         public string Category { get; set; }
         [Required (ErrorMessage ="Select a language of your book")]
+        public int LanguageId { get; set; }
         public string Language { get; set; }
 
         [Required (ErrorMessage ="Please enter the total pages")]

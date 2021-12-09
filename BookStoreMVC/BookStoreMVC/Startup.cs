@@ -26,6 +26,7 @@ namespace BookStoreMVC
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();  //It works only for development environment
             services.AddScoped<BookRepository, BookRepository>();
+            services.AddScoped<LanguageRepository, LanguageRepository>();
 
 #endif
         }

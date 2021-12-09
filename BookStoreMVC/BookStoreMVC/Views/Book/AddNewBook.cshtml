@@ -24,13 +24,13 @@
 <form method="post" asp-action="AddNewBook" asp-controller="Book">
 
     <div class="form-group">
-        <label asp-for="Language" class="control-label"></label>
+        <label asp-for="LanguageId" class="control-label"></label>
         @*<select asp-for="Language" class="form-control" asp-items="new SelectList(ViewBag.ListOflanguage )">*@
-        <select asp-for="Language" class="form-control" asp-items="ViewBag.ListOflanguage">
+        <select asp-for="LanguageId" class="form-control" asp-items=" ViewBag.Language">
             <option value="">--Select Language--</option>
     
         </select>
-        <span asp-validation-for="Language" class="text-danger"></span>
+        <span asp-validation-for="LanguageId" class="text-danger"></span>
 
     </div>
 

@@ -13,9 +13,11 @@ namespace BookStoreMVC.Controlers
     public class BookController : Controller
     {
         private readonly BookRepository _bookRepository = null;
-        public BookController(BookRepository bookRepository)
+        private readonly LanguageRepository _languageRepository = null;
+        public BookController(BookRepository bookRepository, LanguageRepository languageRepository)
         {
             _bookRepository = bookRepository;
+            _languageRepository = languageRepository;
         }
        public async Task<ViewResult> GetAllBooks()
         {
@@ -35,10 +37,14 @@ namespace BookStoreMVC.Controlers
             return _bookRepository.SearchBook(bookName, authorName);
         }
 
-        public ViewResult AddNewBook(bool isSuccess=false, int bookId=0)
+        public async Task<ViewResult> AddNewBook(bool isSuccess=false, int bookId=0)
         {
+
+            ViewBag.Language = new SelectList(await _languageRepository.GetLanguages(), "Id", "Name");
+
+
             //ViewBag.ListOflanguage = new List<string>() { "Bangla", "English", "Arabic" }; // New list at CSHTML File
-            ViewBag.ListOflanguage = new SelectList( new List<string>() { "Bangla", "English", "Arabic" });
+            // ViewBag.ListOflanguage = new SelectList( new List<string>() { "Bangla", "English", "Arabic" });
             ViewBag.IsSuccess = isSuccess;
             ViewBag.BookId = bookId;
             return View();
@@ -57,8 +63,9 @@ namespace BookStoreMVC.Controlers
                 }
             }
 
+            ViewBag.Language = new SelectList( await _languageRepository.GetLanguages(),"Id","Name");
             // ViewBag.ListOflanguage = new List<string>() { "Bangla", "English", "Arabic" };
-            ViewBag.ListOflanguage = new SelectList(new List<string>() { "Bangla", "English", "Arabic" });
+            //ViewBag.ListOflanguage = new SelectList(new List<string>() { "Bangla", "English", "Arabic" });
             return View();
         }
     }
