@@ -30,6 +30,7 @@ namespace BookStoreMVC.Models
         [Display(Name ="Choose the cover photo of your book")]
         [Required]
         public IFormFile CoverPhoto { get; set; }
+        public string CoverImageUrl { get; set; }
 
 
     }

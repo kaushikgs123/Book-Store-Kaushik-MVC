@@ -21,13 +21,15 @@ namespace BookStoreMVC.Repository
         {
             var newBook = new Books()
             {
-                Author=model.Author,
-                CreatedOn=DateTime.UtcNow,
-                Description=model.Description,
-                Title=model.Title,
-                LanguageId=model.LanguageId,             
-                TotalPages=model.TotalPages.HasValue?model.TotalPages.Value:0,
-                UpdatedOn=DateTime.UtcNow
+                Author = model.Author,
+                CreatedOn = DateTime.UtcNow,
+                Description = model.Description,
+                Title = model.Title,
+                LanguageId = model.LanguageId,
+                TotalPages = model.TotalPages.HasValue ? model.TotalPages.Value : 0,
+                UpdatedOn = DateTime.UtcNow,
+                CoverImageUrl = model.CoverImageUrl
+                
             };
 
            await _context.Books.AddAsync(newBook);
@@ -55,7 +57,9 @@ namespace BookStoreMVC.Repository
                         Id=item.Id,
                         LanguageId=item.LanguageId,                       
                         Title=item.Title,
-                        TotalPages=item.TotalPages
+                        TotalPages=item.TotalPages,
+                        CoverImageUrl=item.CoverImageUrl
+ 
 
                     });
 
@@ -78,7 +82,9 @@ namespace BookStoreMVC.Repository
                     LanguageId = book.LanguageId,
                     Language = book.Language.Name,
                     Title = book.Title,
-                    TotalPages = book.TotalPages
+                    TotalPages = book.TotalPages,
+                    CoverImageUrl=book.CoverImageUrl
+                    
                 }).FirstOrDefaultAsync();
 
         
