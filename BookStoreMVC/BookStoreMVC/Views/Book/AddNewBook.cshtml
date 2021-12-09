@@ -21,14 +21,14 @@
         </div>
     }
 
-<form method="post" asp-action="AddNewBook" asp-controller="Book">
+<form method="post" enctype="multipart/form-data" asp-action="AddNewBook" asp-controller="Book">
 
     <div class="form-group">
         <label asp-for="LanguageId" class="control-label"></label>
         @*<select asp-for="Language" class="form-control" asp-items="new SelectList(ViewBag.ListOflanguage )">*@
         <select asp-for="LanguageId" class="form-control" asp-items=" ViewBag.Language">
             <option value="">--Select Language--</option>
-    
+
         </select>
         <span asp-validation-for="LanguageId" class="text-danger"></span>
 
@@ -59,6 +59,23 @@
         <input asp-for="TotalPages" class="form-control" />
         <span asp-validation-for="TotalPages" class="text-danger"></span>
     </div>
+
+
+    <div class="form-group">
+        <label asp-for="CoverPhoto" class="control-label"></label>
+        
+        <div class="custom-file">
+        
+            <input asp-for="CoverPhoto" class="custom-file-input" id="custom-File">
+            <label class="custom-file-label" for="custom-file">Choose file</label>
+
+        </div>
+
+        <span asp-validation-for="CoverPhoto" class="text-danger"></span>
+
+    </div>
+
+
 
     <div class="form-group">
         <input type="submit" value="Add Book" class="btn btn-primary" />
