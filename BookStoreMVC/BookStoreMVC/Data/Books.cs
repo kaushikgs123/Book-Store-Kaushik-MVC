@@ -18,5 +18,7 @@ namespace BookStoreMVC.Data
         public DateTime? UpdatedOn { get; set; }
         public int LanguageId { get; set; }
         public Language Language { get; set; }
+
+        public ICollection<BookGallery> bookGallery { get; set; }
     }
 }
