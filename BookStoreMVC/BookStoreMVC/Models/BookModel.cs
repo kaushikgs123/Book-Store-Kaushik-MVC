@@ -27,17 +27,27 @@ namespace BookStoreMVC.Models
         [Display (Name ="Total pages of book")]
         public int? TotalPages { get; set; }
 
+        //------------Single Image------
         [Display(Name ="Choose the cover photo of your book")]
         [Required]
         public IFormFile CoverPhoto { get; set; }
         public string CoverImageUrl { get; set; }
 
-
+        ///---Multiple Imaage--------------
         [Display(Name = "Choose the cover photos of your book")]
         [Required]
         public IFormFileCollection GalleryFiles { get; set; }
 
         public List<GalleryModel> Gallery { get; set; }
+
+        //----------PDF File---------------
+        [Display(Name = "Upload your book in pdf format")]
+        [Required]
+        public IFormFile BookPdf { get; set; }
+        public string BookPdfUrl { get; set; }
+
+
+
 
 
     }

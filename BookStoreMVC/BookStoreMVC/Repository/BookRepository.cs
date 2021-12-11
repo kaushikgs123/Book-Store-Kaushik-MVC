@@ -29,6 +29,7 @@ namespace BookStoreMVC.Repository
                 TotalPages = model.TotalPages.HasValue ? model.TotalPages.Value : 0,
                 UpdatedOn = DateTime.UtcNow,
                 CoverImageUrl = model.CoverImageUrl,
+                BookPdfUrl=model.BookPdfUrl
                
                 
             };
@@ -101,7 +102,8 @@ namespace BookStoreMVC.Repository
                            Id=b.Id,
                            Name=b.Name,
                            URL=b.URL
-                       }).ToList()
+                       }).ToList(),
+                       BookPdfUrl=book.BookPdfUrl
 
                    }).FirstOrDefaultAsync();
 

@@ -96,6 +96,16 @@ namespace BookStoreMVC.Controlers
                 #endregion
 
 
+                #region Pdf Fie
+
+                if (bookModel.BookPdf != null)
+                {
+                    string folder = "books/pdf";
+                    bookModel.BookPdfUrl = await UploadImage(folder, bookModel.BookPdf);
+                }
+
+                #endregion
+
                 int id = await _bookRepository.AddNewBook(bookModel);
                 if (id > 0)
                 {
