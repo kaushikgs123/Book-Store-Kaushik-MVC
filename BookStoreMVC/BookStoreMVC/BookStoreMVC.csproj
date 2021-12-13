@@ -8,6 +8,7 @@
     <Folder Include="wwwroot\books\cover\" />
     <Folder Include="wwwroot\books\gallery\" />
     <Folder Include="wwwroot\books\pdf\" />
+    <Folder Include="wwwroot\Components\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
 

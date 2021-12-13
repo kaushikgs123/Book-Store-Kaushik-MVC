@@ -121,6 +121,33 @@ namespace BookStoreMVC.Repository
         }
 
 
-       
+
+        public async Task<List<BookModel>> GetTopBooksAsync()
+        {
+            var books = new List<BookModel>();
+            var allBooks = await _context.Books.Take(5).ToListAsync();
+
+            if (allBooks?.Any() == true)
+            {
+                foreach (var item in allBooks)
+                {
+                    books.Add(new BookModel()
+                    {
+                        Author = item.Author,
+                        Category = item.Category,
+                        Description = item.Description,
+                        Id = item.Id,
+                        LanguageId = item.LanguageId,
+                        Title = item.Title,
+                        TotalPages = item.TotalPages,
+                        CoverImageUrl = item.CoverImageUrl
+
+                    });
+                }
+            }
+
+            return books;
+        }
+
     }
 }
