@@ -26,14 +26,14 @@ namespace BookStoreMVC.Controlers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        [Route("~/all-books")]
+        [Route("~/all-books")] //Override
        public async Task<ViewResult> GetAllBooks()
         {
            var data=await _bookRepository.GetAllBooks();
             return View(data);
         }
 
-        [Route("~/book-detail/{id}")]
+        [Route("~/book-detail/{id:int:min(1)}")]  //Route constraints 
         public async Task<ViewResult> GetBook(int id)
         {
             var data= await _bookRepository.GetBookById(id);
@@ -64,7 +64,7 @@ namespace BookStoreMVC.Controlers
         {
             if (ModelState.IsValid)
             {
-                #region Single Image
+                #region Cover Image
 
                 if (bookModel.CoverPhoto != null)
                 {
