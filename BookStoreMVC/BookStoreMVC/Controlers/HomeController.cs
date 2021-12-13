@@ -8,13 +8,18 @@ using BookStoreMVC.Models;
 
 namespace BookStoreMVC.Controlers
 {
+
+    [Route("[controller]/[action]")]
     public class HomeController : Controller
     {
-        [ViewData] 
+
+        [ViewData]
         public string CustomProperty { get; set; }
 
         [ViewData]
         public string Title { get; set; }
+
+        [Route("~/")]
         public ViewResult Index()
         {
             CustomProperty = "Hllo from View data";

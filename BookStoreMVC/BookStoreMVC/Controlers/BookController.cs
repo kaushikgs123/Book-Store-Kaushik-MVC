@@ -12,7 +12,8 @@ using System.Threading.Tasks;
 
 namespace BookStoreMVC.Controlers
 {
-    
+
+ [Route("[controller]/[action]")]
     public class BookController : Controller
     {
         private readonly BookRepository _bookRepository = null;
@@ -24,13 +25,15 @@ namespace BookStoreMVC.Controlers
             _languageRepository = languageRepository;
             _webHostEnvironment = webHostEnvironment;
         }
+
+        [Route("~/all-books")]
        public async Task<ViewResult> GetAllBooks()
         {
            var data=await _bookRepository.GetAllBooks();
             return View(data);
         }
 
-        //[Route("book-detail/{id}")]
+        [Route("~/book-detail/{id}")]
         public async Task<ViewResult> GetBook(int id)
         {
             var data= await _bookRepository.GetBookById(id);
