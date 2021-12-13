@@ -122,10 +122,10 @@ namespace BookStoreMVC.Repository
 
 
 
-        public async Task<List<BookModel>> GetTopBooksAsync()
+        public async Task<List<BookModel>> GetTopBooksAsync(int count)
         {
             var books = new List<BookModel>();
-            var allBooks = await _context.Books.Take(5).ToListAsync();
+            var allBooks = await _context.Books.Take(count).ToListAsync();
 
             if (allBooks?.Any() == true)
             {
