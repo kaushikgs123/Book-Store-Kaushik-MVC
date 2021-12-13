@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreMVC.Repository
 {
-    public class BookRepository
+    public class BookRepository : IBookRepository
     {
         private readonly BookStoreContext _context = null;
 
@@ -29,50 +29,50 @@ namespace BookStoreMVC.Repository
                 TotalPages = model.TotalPages.HasValue ? model.TotalPages.Value : 0,
                 UpdatedOn = DateTime.UtcNow,
                 CoverImageUrl = model.CoverImageUrl,
-                BookPdfUrl=model.BookPdfUrl
-               
-                
+                BookPdfUrl = model.BookPdfUrl
+
+
             };
             //var gallery = new List<BookGallery>();
             newBook.bookGallery = new List<BookGallery>();
             foreach (var file in model.Gallery)
             {
-               newBook.bookGallery.Add(new BookGallery()
+                newBook.bookGallery.Add(new BookGallery()
                 {
-                    Name=file.Name,
-                    URL=file.URL
+                    Name = file.Name,
+                    URL = file.URL
                 });
             }
 
 
-           await _context.Books.AddAsync(newBook);
-           await _context.SaveChangesAsync();
+            await _context.Books.AddAsync(newBook);
+            await _context.SaveChangesAsync();
             return newBook.Id;
 
-          
+
         }
 
 
-        public async Task<List<BookModel>>  GetAllBooks()
+        public async Task<List<BookModel>> GetAllBooks()
         {
             var books = new List<BookModel>();
             var allBooks = await _context.Books.ToListAsync();
 
-            if (allBooks?.Any()==true)
+            if (allBooks?.Any() == true)
             {
                 foreach (var item in allBooks)
                 {
                     books.Add(new BookModel()
                     {
-                        Author=item.Author,
-                        Category=item.Category,
-                        Description=item.Description,
-                        Id=item.Id,
-                        LanguageId=item.LanguageId,                       
-                        Title=item.Title,
-                        TotalPages=item.TotalPages,
-                        CoverImageUrl=item.CoverImageUrl
- 
+                        Author = item.Author,
+                        Category = item.Category,
+                        Description = item.Description,
+                        Id = item.Id,
+                        LanguageId = item.LanguageId,
+                        Title = item.Title,
+                        TotalPages = item.TotalPages,
+                        CoverImageUrl = item.CoverImageUrl
+
 
                     });
 
@@ -99,20 +99,20 @@ namespace BookStoreMVC.Repository
                        CoverImageUrl = book.CoverImageUrl,
                        Gallery = book.bookGallery.Select(b => new GalleryModel()
                        {
-                           Id=b.Id,
-                           Name=b.Name,
-                           URL=b.URL
+                           Id = b.Id,
+                           Name = b.Name,
+                           URL = b.URL
                        }).ToList(),
-                       BookPdfUrl=book.BookPdfUrl
+                       BookPdfUrl = book.BookPdfUrl
 
                    }).FirstOrDefaultAsync();
 
-        
+
         }
 
-    
-            
-    
+
+
+
 
 
         public List<BookModel> SearchBook(string title, string authorName)
