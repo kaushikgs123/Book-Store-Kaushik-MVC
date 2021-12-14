@@ -40,6 +40,7 @@ namespace BookStoreMVC
             services.AddRazorPages().AddRazorRuntimeCompilation();  //It works only for development environment
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
 
 #endif
         }
