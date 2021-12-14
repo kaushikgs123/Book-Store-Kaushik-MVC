@@ -45,6 +45,11 @@ namespace BookStoreMVC.Repository
 
         }
 
+        public async Task SignOutAsync()
+        {
+            await _signInManager.SignOutAsync();
+        }
+
     
     }
 }
