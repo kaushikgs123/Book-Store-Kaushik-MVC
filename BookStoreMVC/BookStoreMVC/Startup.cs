@@ -37,6 +37,11 @@ namespace BookStoreMVC
                 .AddEntityFrameworkStores<BookStoreContext>();
 
             services.AddControllersWithViews();
+            services.ConfigureApplicationCookie(config =>
+            {
+                config.LoginPath = "/login";
+            });
+
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();  //It works only for development environment
             services.AddScoped<IBookRepository, BookRepository>();
