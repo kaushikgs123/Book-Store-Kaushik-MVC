@@ -43,10 +43,41 @@ namespace BookStoreMVC.Controlers
                     return View(userModel);
                 }
 
-
                 ModelState.Clear();
             }
             return View();
         }
+
+
+        [Route("login")]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [Route("login")]
+        [HttpPost]
+        public async Task <IActionResult> Login(SignInModel signInModel)
+        {
+      
+            if (ModelState.IsValid)
+            {
+               var result= await _accountRepository.PasswordSignInAsync(signInModel);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                ModelState.AddModelError("", "Invalid credentials");
+               
+            }
+
+            return View();
+        }
+
+
+
+
     }
 }

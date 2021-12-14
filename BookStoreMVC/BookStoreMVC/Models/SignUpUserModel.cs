@@ -12,11 +12,14 @@ namespace BookStoreMVC.Models
         [Display(Name ="First Name")]
         public string FirstName { get; set; }
 
+
         [Required(ErrorMessage = "Please enter your last name")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+
         [Display(Name = "Date of birth")]
+        [Required(ErrorMessage ="Please Select Date of Birth")]
         public DateTime? DateOfBirth { get; set; }
 
 
@@ -29,8 +32,7 @@ namespace BookStoreMVC.Models
         [Required(ErrorMessage = "Please entera strong password")]
         [Compare("ConfirmPassword", ErrorMessage ="Password doesn't match")]
         [Display(Name = "Password")]
-        [DataType(DataType.Password)]
-        
+        [DataType(DataType.Password)]       
         public string Password { get; set; }
 
 
