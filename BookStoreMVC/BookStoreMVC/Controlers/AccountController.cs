@@ -57,7 +57,7 @@ namespace BookStoreMVC.Controlers
 
         [Route("login")]
         [HttpPost]
-        public async Task <IActionResult> Login(SignInModel signInModel)
+        public async Task <IActionResult> Login(SignInModel signInModel, string returnUrl)
         {
       
             if (ModelState.IsValid)
@@ -66,6 +66,10 @@ namespace BookStoreMVC.Controlers
 
                 if (result.Succeeded)
                 {
+                    if (!string.IsNullOrEmpty(returnUrl))
+                    {
+                        return LocalRedirect(returnUrl);
+                    }
                     return RedirectToAction("Index", "Home");
                 }
 
